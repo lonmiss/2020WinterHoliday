@@ -1,4 +1,4 @@
-from par.Stack import *
+from Stack import *
 def parChecker(symbolString):
     s=Stack()
     balanced=True

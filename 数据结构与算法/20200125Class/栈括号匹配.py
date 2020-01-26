@@ -19,5 +19,6 @@ def parChecker(symbolString):
     else:
         return False
 
+ 
 print(parChecker("(((())))"))
 print(parChecker("(()())"))
