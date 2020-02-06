@@ -102,17 +102,95 @@
 |-------|-------------|-------------------------|
 |x,y|组件左上角的绝对值坐标（相对于窗口）|非负整数；x和y选项用于设置偏移（像素）；如果同事设置relx(rely)和x(y),那么palece
 将优先计算relx和rely，然后子啊实现x和y指定的偏移值|
+|relx rely|组件左上角的坐标（相对父容器）|relx是相对父组件的位置，0是最左表，0.5是正中间，1是最右边
+rely是相对父组件的位置，0是最上边，0.5是正中间,1是最下边|
+|width height |组件的宽度和高度|非负整数|
+|relwidth,relheight|组件的宽度和高度（相对与父容器）|与relx,rely取值类似，但是相对于父组件的尺寸|
+|anchor|对齐方式，左对齐“w”|n,s,w,e,nw,sw,se,ne,center(默认)|
+
+
+#### 事件处理
+* 一个GUI应用整个生命周期都处在一个消息循环（eventloop）中，它等待事件的发生，并作出相应的处理
+* Tkinter提供了以处理相应的事件的机制，处理函数可被绑定给各个控件的各种事件
+
+        widget.bind(event,handler)
+* 如果相关事件发生，handler函数会被触发，事件对象event会传递给handler函数
+* 鼠标和键盘事件
+
+|代码|说明|
+|--------------|-------------------------------------|
+|<Button-1> <ButtonPress-1> <1>|鼠标左键按下  2表示中键 3表示右键|
+|<ButtonRelease-1>|鼠标左键释放|
+|<B1-Motion>|按住鼠标左键移动|
+|<Double-Button-1>|双击左键|    
+|<Entry>|鼠标指针进入某一组件区域|  
+|<Leave>|鼠标离开某一组件区域|  
+|<MouseWheel>|滚动滑轮|  
+|<KeyPress-a>|按下a键，a可以用其他键代替|  
+|<KeyRelease-a>|释放a键|  
+|<KeyPress-A>|按下A键|  
+|<Alt-KeyPress-a>|同时按下alt和a;alt可用ctrl和shift代替|  
+|<Double-KeyPress-a>|快速按两下a|  
+|<Control-V>|CTRL和V键被同事按下，V可以换成其他键位| 
+
+* event对象常用属性
+![avatar](./imgs/2020-02-03%2020-00-20屏幕截图.png)
+
+    
+#### lambda表达式详解
+* lambda表达是定义的是一个匿名函数，只适合简单输入参数，简单计算返回结果，不适合功能复杂情况
+
+        lambda 参数值列表：表达式
+![avatar](./imgs/2020-02-03 20-30-55屏幕截图.png)     
+    
+#### 多种事件绑定方式汇总
+##### 组件对象绑定
+* 通过command属性绑定（适合简单不需要获取event对象）
+
+        Button(root,text="登录“，command=login)
+* 通过bind()方法绑定（适合需要获取event对象）
+
+        c1=Canvas();
+        c1.bind("<Button-1>",drawLine)
+##### 组件类的绑定
+* 调用对象的bind_class函数，将该组件类所有的组件绑定事件
+
+        w.bind_class("Widget","event",eventhanler)       
+   
+#### OptionMenu选择项
+* OptionMenu(选择项)用来做多选一，选中的项在顶部显示，显示效果如下：
+
+#### Scale移动滑块
+* Scale(移动滑块)用于制定的数值区间，通过滑块的移动来选择值
+
+#### 颜色选择框
+* 颜色选择框可以帮助我们设置北京颜色、前景色，画笔颜色、字体颜色等等
+
+#### 文件对话框
+![avatar](./imgs/2020-02-04 22-09-23屏幕截图.png)
+
+#### 简单输入对话框
+* simpledialog(简单对话框)包含如下常用函数
+* ～
+
+|函数名|说明|
+|-----------------|------------|
+|askfloat(title,prompt,**kw)|输入并返回浮点数|
+|askinteger(title,prompt,**kw)|输入bong返回整数|
+|sakstring(title,prompt,**kw)|输入并返回字符串|
+
+* 参数中，title表示窗口标题，prompt是提示信息，命名参数kw为各种选项。initialvalue(初始值)
+、 minvalue(最小值)、maxvalue(最大值)
+
+#### 通用消息框
+![avatar](./imgs/2020-02-04%2022-09-23屏幕截图.png)
 
 
 
 
 
-，
 
 
-
-
-
-
+/home/redorange/workspace/2020WinterHoliday/数据结构与算法/20200131Class/project/画图软件.py
 
 
