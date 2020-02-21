@@ -427,3 +427,82 @@ print(response.text)
     # 可以手动指定给他一个证书
     response3=requests.get("https://www.12306.cn",cert=('/path/server.crt','/path/key'))
     print(response3.status_code)
+    
+## 正则表达式
+* 正则表达式是对字母操作的一种逻辑公式，就是用
+#### 常见的匹配模式
+![Alt Text](imgs/2020-02-21%2016-17-35屏幕截图.png)
+
+
+### 正则表达式
+* re.match() # 从头开始找
+* re.search() # 从任意位置找，只找到一个
+* re.findall() # 找到所有的
+* re.sub 替换字符串中每一个匹配的子串返回替换后的字符串
+* re.compile 将正则字符串编译成正则表达式对象
+
+## BeautifulSoup4
+
+* from bs4 import BeautifulSoup
+* soup=Beautiful(html,'lxml')
+* soup.prettify() #将代码补全，格式化
+* soup.title.string # 将title中的内容打印出来
+#### 标签选择器
+* 兄弟节点
+* * soup.a.next_siblings 该节点的下一个节点
+* * soup.a.previous_siblings 该节点的上一个节点
+##### 标准选择器
+* find_all(name,attrs,recursive,text,**kwargs)
+* 可根据标签名、属性、内容查找文档
+* soup.find_all(attrs={'id':'list-1'})
+* soup.find_all(id='list-1')
+* soup.find_all(class_="element")
+* find_parents() find_parent()
+* * 返回所有的祖先接点  返回直接的父节点
+* find_next_siblings() find_next_sibling()
+* * 返回后面的所有兄弟节点 返回后面第一个兄弟节点
+* find_previous_siblings()  find_next_sibling()
+* * 返回前面所有的兄弟节点 返回前面第一个兄弟节点
+* find_all_next() find_next()
+* * 返回节点后所有符合条件的节点，find_next() 返回符合跳进啊的节点
+* find_all_previous() find_previous()
+* * 返回节点后所有符合条件的节点 返回第一个符合条件的节点
+
+
+#### CSS选择器
+* 通过select()直接传入CSS选择器即可完成选择
+* soup.select('.panel .panel-heading')
+* soup.select('ul li')
+* soup.select('#list-2 .element')
+* soup.select('ul')[0]
+* 
+    soup=BeautifulSoup(html,'lxml')
+    for ul in soup.select('ul'):
+        print(ul.select('li'))
+        
+#### 获取属性
+
+    soup=BeautifulSoup(html,'lxml')
+    for ul in soup.select('ul'):
+        print(ul['id])
+        print(ul.attrs['id'])
+#### 获取内容
+* li.get_text()
+![Alt Text](imgs/2020-02-21 22-11-28屏幕截图.png)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

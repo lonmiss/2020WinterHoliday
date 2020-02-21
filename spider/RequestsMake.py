@@ -170,7 +170,7 @@ print(response.cookies)
 for key,value in response.cookies.items():
     print(key+"="+value)
 
-"""
+
 
 #### 证书验证
 import requests
@@ -189,7 +189,25 @@ print(response2.status_code)
 # 可以手动指定给他一个证书
 response3=requests.get("https://www.12306.cn",cert=('/path/server.crt','/path/key'))
 print(response3.status_code)
+headers={
+    'User-Agent':"Mozilla/5.0 (Windows NT 6.1; rv:2.0.1) Gecko/20100101 Firefox/4.0.1"
+}
 
+
+#### 代理设置
+import requests
+
+headers={
+    'User-Agent':"Mozilla/5.0 (Windows NT 6.1; rv:2.0.1) Gecko/20100101 Firefox/4.0.1"
+}
+proxies={
+    "http":"http://127.0.0.1:443",
+    "https":"https://127.0.0.1:443"
+}
+response=requests.get("https://www.taobao.com",proxies=proxies,headers=headers)
+print(response.status_code)
+
+"""
 
 
 
