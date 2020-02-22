@@ -491,12 +491,38 @@ print(response.text)
 ![Alt Text](imgs/2020-02-21 22-11-28屏幕截图.png)
 
 
+### PyQuery库
 
 
+### selenium
 
+#### 查找单个元素
+* find_element_by_name
+* find_element_by_xpath
+* find_element_by_partial_link_text
+* find_element_by_tag_name
+* find_element_by_class_name
+* find_element_by_css_selector
 
+#### 查找多个元素
+* find_elements_by_name
+* find_elements_by_xpath
+* find_elements_by_partial_link_text
+* find_elements_by_tag_name
+* find_elements_by_class_name
+* find_elements_by_css_selector
 
+#### 执行JavaScript
+browser=webdriver.Chrome()
 
+#### 等待
+* 隐式等待
+* 显示等待
+![Alt Text](imgs/2020-02-22%2021-13-57屏幕截图.png)
+
+#### 多进程抓取
+* pool=Pool()
+* pool.map(main,[i*10 for i in range(10)])
 
 
 
